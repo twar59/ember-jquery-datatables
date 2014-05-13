@@ -8,7 +8,6 @@ default Ember.Component.extend({
         console.log('create datatable');
         var self = this;
         var theController = this.get('value');
-        //this.set('value', this.get('ctrl.content'));
 
         this.$('.table').dataTable({
             "bProcessing": true,
@@ -16,7 +15,7 @@ default Ember.Component.extend({
             "aoColumns": theController.get('datatableColumns'),
         }),
 
-        this.$('.table td.remove-control').on('click', function() {
+        this.$('.table .delete-control').on('click', function() {
             var table = self.$('.table').DataTable();
             var tr = $(this).parents('tr');
             var rowContent = table.row(tr).data();
@@ -27,7 +26,7 @@ default Ember.Component.extend({
 
         })
 
-        this.$('.table td.edit-control').on('click', function() {
+        this.$('.table .edit-control').on('click', function() {
             var table = self.$('.table').DataTable();
             var tr = $(this).parents('tr');
             var rowContent = table.row(tr).data();
@@ -37,7 +36,7 @@ default Ember.Component.extend({
 
         })
 
-        this.$('.table td.show-control').on('click', function() {
+        this.$('.table .show-control').on('click', function() {
             var table = self.$('.table').DataTable();
             var tr = $(this).parents('tr');
             var rowContent = table.row(tr).data();

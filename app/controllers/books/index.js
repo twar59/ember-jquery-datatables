@@ -1,26 +1,21 @@
 export
 default Ember.ArrayController.extend({
     datatableColumns: [{
-        "class": 'show-control',
-        "orderable": false,
-        "data": "",
-        "defaultContent": 'Show'
-    }, {
-        "class": 'edit-control',
-        "orderable": false,
-        "data": "",
-        "defaultContent": 'Edit'
-    }, {
-        "class": 'remove-control',
-        "orderable": false,
-        "data": "",
-        "defaultContent": 'Delete'
+        "sTitle": "Title",
+        "mData": "title"
     }, {
         "sTitle": "Author",
         "mData": "author"
     }, {
-        "sTitle": "Title",
-        "mData": "title"
+        "sTitle": "Actions",
+        "mRender": function(oObj) {
+            return '<a class="btn btn-sm btn-primary edit-control">Edit</a>' +
+             '<a class="btn btn-sm btn-primary show-control">Show</a>' +
+             '<a class="btn btn-sm btn-danger delete-control">Delete</a>';
+        },
+        "class": 'actions',
+        "orderable": false,
+        "data": "",
     }],
 
     actions: {
