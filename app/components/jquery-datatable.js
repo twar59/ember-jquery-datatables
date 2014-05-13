@@ -11,49 +11,40 @@ export default Ember.Component.extend({
             "bProcessing": true,
             "aaData": theController.getEach('data'),
             "aoColumns": theController.get('datatableColumns'),
-        }),
+        });
 
         this.$('.table .delete-control').on('click', function() {
-            var table = self.$('.table').DataTable();
-            var tr = $(this).parents('tr');
-            var rowContent = table.row(tr).data();
-
-            if (confirm("Are you sure you want to delete this record?")) {
-                theController.content.findBy('id', rowContent.id).destroyRecord();
-            }
-
-        })
+            self.actionOnRow(this, function(row) {
+                if (window.confirm("Are you sure you want to delete this record?")) {
+                    row.destroyRecord();
+                }
+            });
+        });
 
         this.$('.table .edit-control').on('click', function() {
-            var table = self.$('.table').DataTable();
-            var tr = $(this).parents('tr');
-            var rowContent = table.row(tr).data();
-
-            var obj = theController.content.findBy('id', rowContent.id);
-            theController.transitionToRoute("books.edit", obj );
-
-        })
+            self.actionOnRow(this, function(row) {
+                theController.transitionToRoute("books.edit", row);
+            });
+        });
 
         this.$('.table .show-control').on('click', function() {
-            var table = self.$('.table').DataTable();
-            var tr = $(this).parents('tr');
-            var rowContent = table.row(tr).data();
+            self.actionOnRow(this, function(row) {
+                theController.transitionToRoute("books.show", row);
+            });
+        });
 
-            var obj = theController.content.findBy('id', rowContent.id);
-            theController.transitionToRoute("books.show", obj );
+    },
 
-        })
+    actionOnRow: function(target, action) {
+        var table = this.$('.table').DataTable();
+        var tr = $(target).parents('tr');
+        var rowContent = table.row(tr).data();
+        var row = this.get('value').content.findBy('id', rowContent.id);
+        action(row);
     },
 
 
     changeContent: function() {
         this.rerender();
     }.observes('value.@each'),
-
-    actions: {
-      edit: function(id) {
-          debugger;
-          theController.transitionTo("books.edit", {id: id} )
-      }
-    },
 });
