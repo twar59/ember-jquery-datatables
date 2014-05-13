@@ -1,8 +1,6 @@
-export
-default Ember.Component.extend({
+export default Ember.Component.extend({
     tagName: 'div',
     classNames: ['ember-dataTable-container'],
-    template: Ember.Handlebars.compile('<table class="table table-striped table-bordered dataTable"></table>'),
 
     didInsertElement: function() {
         console.log('create datatable');
