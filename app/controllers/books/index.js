@@ -1,5 +1,4 @@
-export
-default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend({
     datatableColumns: [{
         "sTitle": "Title",
         "mData": "title"
@@ -8,7 +7,7 @@ default Ember.ArrayController.extend({
         "mData": "author"
     }, {
         "sTitle": "Actions",
-        "mRender": function(oObj) {
+        "mRender": function() {
             return '<a class="btn btn-sm btn-primary edit-control">Edit</a>' +
              '<a class="btn btn-sm btn-primary show-control">Show</a>' +
              '<a class="btn btn-sm btn-danger delete-control">Delete</a>';
@@ -17,13 +16,5 @@ default Ember.ArrayController.extend({
         "orderable": false,
         "data": "",
     }],
-
-    actions: {
-        delete: function(book) {
-            book.destroyRecord();
-        },
-
-    },
-
 
 });

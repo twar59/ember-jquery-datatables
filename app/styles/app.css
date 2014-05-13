@@ -8,5 +8,9 @@ html, body {
 }
 
 .button-container {
-  padding-top: 10px
+  padding-top: 10px;
+}
+
+.table .btn {
+  margin-right: 5px;
 }
