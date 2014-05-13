@@ -26,31 +26,10 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
 });
 
 // ======== non amd js assets ============
+app.import('vendor/bootstrap/dist/css/bootstrap.css');
 app.import('vendor/bootstrap/dist/js/bootstrap.js');
+
+app.import('vendor/DataTables/media/css/jquery.dataTables.css');
 app.import('vendor/DataTables/media/js/jquery.dataTables.js');
 
-// ========== add css assets ===========
-//module.exports = app.toTree();
-
-var pickFiles = require('broccoli-static-compiler');
-var mergeTrees  = require('broccoli-merge-trees');
-
-// get a hold of the tree in question
-var bootstrapCss = pickFiles('vendor', {
-    srcDir: '/bootstrap/dist/css', files: [ 'bootstrap.css', 'bootstrap-theme.css' ],
-    destDir: '/assets/'
-});
-var datatablesCss = pickFiles('vendor', {
-    srcDir: '/DataTables/media/css', files: [ 'jquery.dataTables.css' ],
-    destDir: '/assets/'
-});
-
-// default ember app source tree
-var emberApp = app.toTree();
-
-// shim in custom assets
-var appAndCustomDependencies = mergeTrees([emberApp, bootstrapCss, datatablesCss], {
-  overwrite: true
-});
-
-module.exports = appAndCustomDependencies;
+module.exports = app.toTree();
