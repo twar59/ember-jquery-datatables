@@ -1,3 +1,8 @@
+//
+// Depends on a upstream object accepting actions:
+//   submit
+//   cancel
+//
 export default Ember.Component.extend({
     tagName: 'div',
 
@@ -13,7 +18,7 @@ export default Ember.Component.extend({
             if (charCode === KEYCODE_ESC) { console.log('cancel'); this.sendAction('cancel'); }
         }.bind(this));
 
-        this.$('input')[0].focus();
+        this.$('input:visible:first').focus();
     }
 
 });

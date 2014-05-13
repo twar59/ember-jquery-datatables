@@ -26,6 +26,7 @@ app.import('vendor/ic-ajax/dist/named-amd/main.js', {
 });
 
 // ======== non amd js assets ============
+app.import('vendor/bootstrap/dist/js/bootstrap.js');
 app.import('vendor/DataTables/media/js/jquery.dataTables.js');
 
 // ========== add css assets ===========
