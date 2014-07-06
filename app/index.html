@@ -9,16 +9,18 @@
 
     {{BASE_TAG}}
 
-    <link rel="stylesheet" href="assets/app.css">
     <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/ember-jquery-datatables.css">
   </head>
   <body>
     <script>
-      window.ENV = {{ENV}};
+      window.EmberJqueryDatatablesENV = {{ENV}};
+      window.EmberENV = window.EmberJqueryDatatablesENV.EmberENV;
     </script>
-    <script src="assets/app.js"></script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/ember-jquery-datatables.js"></script>
     <script>
-      window.EmberJqueryDatatables = require('ember-jquery-datatables/app')['default'].create(ENV.APP);
+      window.App39 = require('ember-jquery-datatables/app')['default'].create(EmberJqueryDatatablesENV.APP);
     </script>
   </body>
 </html>

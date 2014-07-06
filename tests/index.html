@@ -3,13 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>EmberJqueryDatatables Tests</title>
+    <title>App39 Tests</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{BASE_TAG}}
 
-    <link rel="stylesheet" href="assets/app.css">
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/app39.css">
     <link rel="stylesheet" href="assets/qunit.css">
     <style>
       #ember-testing-container {
@@ -33,14 +34,17 @@
     <div id="qunit-fixture"></div>
 
     <script>
-      window.ENV = {{ENV}};
+      window.App39ENV = {{ENV}};
+      window.EmberENV = window.App39ENV.EmberENV;
     </script>
     <script src="assets/qunit.js"></script>
-    <script src="assets/app.js"></script>
+    <script src="assets/qunit-notifications.js"></script>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/app39.js"></script>
     <script src="testem.js"></script>
     <script>
-      require('ember-jquery-datatables/tests/test-helper');
-      require('ember-jquery-datatables/tests/test-loader');
+      require('app39/tests/test-helper');
     </script>
+    <script src="assets/test-loader.js"></script>
   </body>
 </html>

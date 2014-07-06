@@ -3,13 +3,12 @@ export default Ember.Component.extend({
     classNames: ['ember-dataTable-container'],
 
     didInsertElement: function() {
-        console.log('create datatable');
         var self = this;
         var theController = this.get('value');
 
         this.$('.table').dataTable({
             "bProcessing": true,
-            "aaData": theController.getEach('data'),
+            "aaData": theController.getEach('data').filter(function(item) {return item.id; }),
             "aoColumns": theController.get('datatableColumns'),
         });
 
@@ -23,7 +22,7 @@ export default Ember.Component.extend({
 
         this.$('.table .edit-control').on('click', function() {
             self.actionOnRow(this, function(row) {
-                theController.transitionToRoute("books.edit", row);
+                theController.transitionToRoute("book.edit", row);
             });
         });
 
@@ -43,8 +42,8 @@ export default Ember.Component.extend({
         action(row);
     },
 
-
     changeContent: function() {
+        console.log('changeContent');
         this.rerender();
     }.observes('value.@each'),
 });

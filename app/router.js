@@ -1,16 +1,18 @@
+import Ember from 'ember';
+
 var Router = Ember.Router.extend({
-  rootURL: ENV.rootURL,
-  location: 'auto'
+  location: EmberJqueryDatatablesENV.locationType
 });
 
 Router.map(function() {
-  this.resource("books", function() {
-    this.route('new');
-    this.route('edit', {path: '/:book_id/edit'});
-    this.route('show', {path: '/:book_id/show'});
-  });
+    this.resource("books", function() {
+        this.route('new');
+        this.resource('book', { path: ':book_id' }, function() {
+            this.route('show', { path: '/' });
+            this.route('edit', { path: '/edit' });
+        });
+    });
 });
-
 
 
 

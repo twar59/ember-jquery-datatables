@@ -1,5 +1,11 @@
 export
 default Ember.Route.extend({
+    controllerName: 'books',
+
+    model: function(params) {
+        return this.store.all('book').findBy('id', params.book_id);
+    },
+
     renderTemplate: function() {
         this.render('books.form');
     },

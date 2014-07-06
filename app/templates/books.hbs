@@ -1,0 +1,31 @@
+<p> {{link-to 'Add a Book' 'books.new' class="btn btn-sm btn-success"}} </p>
+
+{{!jquery-datatable valueBinding="controller"}}
+
+<table border="1" >
+  <tr>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Actions</th>
+  </tr>
+
+  {{#each book in controller itemController=book}}
+{{log book}}
+  <tr>
+    <td>{{book.title}}</td>
+    <td>{{book.author}}</td>
+    <td style="padding: 10px">
+      {{link-to "Edit" "book.edit" book class="btn btn-sm btn-primary"}} 
+      {{link-to "Show" "book.show" book class="btn btn-sm btn-primary"}} 
+      <button {{action 'delete' book}} class="btn btn-sm btn-danger">Delete</button>
+    </td>
+  </tr>
+  {{/each}}
+  
+
+</table>
+
+
+{{outlet}}
+
+
